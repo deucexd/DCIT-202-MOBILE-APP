@@ -6,15 +6,18 @@ import {
   ScrollView, 
   SafeAreaView, 
   Button, 
-  StyleSheet
+  StyleSheet,
+  TouchableOpacityBase
   } from 'react-native';
 import { getProduct } from '../services/ProductsService.js';
 import { CartContext } from '../CartContext';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 export function ProductDetails({route}) {
   const { productId } = route.params;
   const [product, setProduct] = useState({});
 
   const { addItemToCart } = useContext(CartContext);
+  const { removeItemFromCart } = useContext(CartContext);
 
   useEffect(() => {
     setProduct(getProduct(productId));
@@ -22,6 +25,9 @@ export function ProductDetails({route}) {
 
   function onAddToCart() {
     addItemToCart(product.id);
+  }
+  function onRemoveFromCart() {
+    removeItemFromCart(product.id);
   }
 
   return (
@@ -35,10 +41,19 @@ export function ProductDetails({route}) {
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.price}>$ {product.price}</Text>
           <Text style={styles.description}>{product.description}</Text>
+          <View>
+
             <Button
-            onPress={onAddToCart}
-            title="Add to cart"
-            / >
+            onPress ={onAddToCart}
+              title=
+            "Add To Cart"
+            />
+             <Button
+            onPress ={onRemoveFromCart}
+              title=
+            "Remove From Cart"
+            />
+              </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -80,4 +95,18 @@ const styles = StyleSheet.create({
     color: '#787878',
     marginBottom: 16,
   },
+  addbtn:
+  {
+    width: "57%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 10,
+    backgroundColor: "#e3963e",
+  },
+  text:
+  {
+  
+  }
 });

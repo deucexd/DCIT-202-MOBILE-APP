@@ -3,16 +3,30 @@ import React, { useState } from "react";
 import { StyleSheet,Text,View,Image,TextInput,Button,TouchableOpacity,} from "react-native";
 
 
-export function Login({navigation
-}) {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+export function checkout({navigation}) {
 
   return (
     <View style={styles.container}>
-      <Image style={styles.image} source={require("../assets/logo2.png")} />
 
       <StatusBar style="auto" />
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Full Name"
+          placeholderTextColor="#f7f7f7"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Phone Number."
+          placeholderTextColor="#f7f7f7"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
+
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -25,24 +39,32 @@ export function Login({navigation
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
-          placeholder="Password."
+          placeholder="Address 1."
           placeholderTextColor="#f7f7f7"
-          secureTextEntry={true}
-          onChangeText={(password) => setPassword(password)}
+          onChangeText={(email) => setEmail(email)}
         />
       </View>
 
-      <TouchableOpacity>
-        <Text style={styles.forgot_button}>Forgot Password?</Text>
-      </TouchableOpacity>
+      <View style={styles.inputView}>
+        <TextInput
+          style={styles.TextInput}
+          placeholder="Address 2."
+          placeholderTextColor="#f7f7f7"
+          onChangeText={(email) => setEmail(email)}
+        />
+      </View>
 
-      <TouchableOpacity style={styles.loginBtn}>
+     
+
+      
+
+      <TouchableOpacity style={styles.checkBtn}>
         <Text style={styles.text}
         onPress= {() => {
-            navigation.navigate("ProductsList")
+            navigation.navigate("confirmation")
         }}
         
-        >LOGIN</Text> 
+        >CHECKOUT</Text> 
       </TouchableOpacity>
     </View>
   );
@@ -85,7 +107,7 @@ const styles = StyleSheet.create({
     marginBottom: 30,
   },
 
-  loginBtn: {
+  checkBtn: {
     width: "80%",
     borderRadius: 25,
     height: 50,

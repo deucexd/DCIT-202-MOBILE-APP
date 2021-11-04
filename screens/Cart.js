@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { View, Text, Button, FlatList, StyleSheet } from 'react-native';
+import { View, Text, Button, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { CartContext } from '../CartContext';
 export function Cart ({navigation}) {
 const {items, getItemsCount, getTotalPrice} = useContext(CartContext);
@@ -26,6 +26,7 @@ function renderItem({item}) {
   }
 
   return (
+    <View>
     <FlatList
       style={styles.itemsList}
       contentContainerStyle={styles.itemsListContainer}
@@ -34,6 +35,14 @@ function renderItem({item}) {
       keyExtractor={(item) => item.product.id.toString()}
       ListFooterComponent={Totals}
     />
+    <TouchableOpacity style={styles.CheckoutBtn}>
+        <Text style={styles.text}
+        onPress= {() => {
+            navigation.navigate("checkout");
+        }}
+        >Proceed To Checkout</Text>
+        </TouchableOpacity>
+        </View>
   );
 }
 const styles = StyleSheet.create({
@@ -69,4 +78,14 @@ const styles = StyleSheet.create({
     paddingVertical: 8,
     marginHorizontal: 8,
   },
+  CheckoutBtn: {
+    width: "80%",
+    borderRadius: 25,
+    height: 50,
+    alignItems: "center",
+    justifyContent: "center",
+    marginTop: 40,
+    backgroundColor: "#e3963e", 
+  
+  }
 });

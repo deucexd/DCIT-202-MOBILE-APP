@@ -3,6 +3,11 @@ import { getProduct } from './services/ProductsService.js';
 export const CartContext = createContext();
 export function CartProvider(props) {
   const [items, setItems] = useState([]);
+  function removeItemFromCart(id){
+    setItems ((prevItems) => {
+      return prevItems.filter((item) => (item.id !=id))
+    })
+  }
 
   function addItemToCart(id) {
     const product = getProduct(id);
@@ -37,7 +42,7 @@ function getItemsCount() {
 
   return (
     <CartContext.Provider 
-      value={{items, setItems, getItemsCount, addItemToCart, getTotalPrice}}>
+      value={{items, setItems, getItemsCount, addItemToCart, getTotalPrice,removeItemFromCart}}>
       {props.children}
     </CartContext.Provider>
   );
