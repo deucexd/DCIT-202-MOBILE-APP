@@ -5,7 +5,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export function confirmation({navigation}) {
   return (
     <View style={styles.container}>
-      <Text>Order Confirmed!👍{"\n"}Check Outside</Text>
+      <Text>🎉🎉🎉Order Confirmed!🎉🎉🎉{"\n"}Thank you for your order, we will contact you as soon as your package is shipped, Purchase Information will be sent to your email.</Text>
       <StatusBar style="auto" />
     </View>
   );

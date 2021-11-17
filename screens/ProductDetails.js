@@ -41,19 +41,17 @@ export function ProductDetails({route}) {
           <Text style={styles.name}>{product.name}</Text>
           <Text style={styles.price}>$ {product.price}</Text>
           <Text style={styles.description}>{product.description}</Text>
-          <View>
+          </View>
+            <View style= {styles.fittext}>
+              <Button 
+              onPress={onRemoveFromCart}
+              title="Remove From Cart"
+              />
 
             <Button
             onPress ={onAddToCart}
-              title=
-            "Add To Cart"
+              title= "Add To Cart"
             />
-             <Button
-            onPress ={onRemoveFromCart}
-              title=
-            "Remove From Cart"
-            />
-              </View>
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -105,8 +103,11 @@ const styles = StyleSheet.create({
     marginTop: 10,
     backgroundColor: "#e3963e",
   },
-  text:
-  {
-  
+   fittext: {
+     flexDirection : "row",
+     justifyContent: "space-between",
+     marginLeft: "10%",
+     marginRight: "10%",
+     marginBottom: "20%"       
   }
 });

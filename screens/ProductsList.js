@@ -28,6 +28,7 @@ function renderProduct({item: product}) {
       keyExtractor={(item) => item.id.toString()}
       data={products}
       renderItem={renderProduct}
+      numColumns={1}
     />
   );
 }
